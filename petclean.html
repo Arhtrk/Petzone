@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لوازم نظافت حیوانات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="petclean.css">
+
+
+</head>
+
+<body>
+    <div class="fancy-bg"></div>
+    <header class="cleaning-header">
+        <div class="icon-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="cleaning icon">
+        </div>
+        <h1>لوازم نظافت حیوانات</h1>
+        <p>تمیزی و بهداشت، تضمین سلامتی حیوانات شما</p>
+        <!-- آیکون سبد خرید -->
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span id="cart-count">0</span>
+        </div>
+
+        <!-- پنل سبد خرید -->
+        <div class="shopping-cart" id="shopping-cart">
+            <div class="cart-header">
+                <h3>سبد خرید شما</h3>
+                <button onclick="toggleCart()">بستن ✖️</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <p>مجموع: <span id="cart-total">۰ تومان</span></p>
+                <button class="checkout-btn">ادامه پرداخت</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="product-section">
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="img/clean1.webp" alt="برس نرم مخصوص گربه">
+                <h3>برس نرم مخصوص گربه</h3>
+                <p class="price">۱۸۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('برس نرم مخصوص گربه', 'img/clean1.webp', 180000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean2.webp" alt="شامپو ضد حساسیت سگ">
+                <h3>شامپو ضد حساسیت سگ</h3>
+                <p class="price">۲۲۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('شامپو ضد حساسیت سگ', 'img/clean2.webp', 220000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean3.webp" alt="قیچی ناخن مخصوص حیوانات خانگی">
+                <h3>قیچی ناخن مخصوص حیوانات خانگی</h3>
+                <p class="price">۹۵٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('قیچی ناخن مخصوص حیوانات خانگی', 'img/clean3.webp', 95000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean4.webp" alt="دستمال مرطوب مخصوص حیوانات">
+                <h3>دستمال مرطوب مخصوص حیوانات</h3>
+                <p class="price">۱۳۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('دستمال مرطوب مخصوص حیوانات', 'img/clean4.webp', 130000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean5.webp" alt="شانه فلزی مخصوص سگ">
+                <h3>شانه فلزی مخصوص سگ</h3>
+                <p class="price">۲۵۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('شانه فلزی مخصوص سگ', 'img/clean5.webp', 250000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean6.webp" alt="شامپو ملایم مخصوص گربه">
+                <h3>شامپو ملایم مخصوص گربه</h3>
+                <p class="price">۱۷۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('شامپو ملایم مخصوص گربه', 'img/clean6.webp', 170000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean7.webp" alt="حوله خشک‌کن سریع حیوانات">
+                <h3>حوله خشک‌کن سریع حیوانات</h3>
+                <p class="price">۱۱۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('حوله خشک‌کن سریع حیوانات', 'img/clean7.webp', 110000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean8.webp" alt="فرچه نرم تمیزکننده حیوانات">
+                <h3>فرچه نرم تمیزکننده حیوانات</h3>
+                <p class="price">۱۵۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('فرچه نرم تمیزکننده حیوانات', 'img/clean8.webp', 150000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean9.webp" alt="شامپو گیاهی ضد حساسیت">
+                <h3>شامپو شیر ضد حساسیت</h3>
+                <p class="price">۲۰۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('شامپو گیاهی ضد حساسیت', 'img/clean9.webp', 200000)">افزودن به سبد خرید</button>
+            </div>
+
+            <div class="product-card">
+                <img src="img/clean10.webp" alt="دستکش نظافت مویی حیوانات">
+                <h3>دستکش نظافت مویی حیوانات</h3>
+                <p class="price">۱۹۰٬۰۰۰ تومان</p>
+                <button class="buy-btn" onclick="addToCart('دستکش نظافت مویی حیوانات', 'img/clean10.webp', 190000)">افزودن به سبد خرید</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="mega-footer " data-aos=fade-up>
+        <div class="footer-glow "></div>
+        <div class="footer-content " data-aos=fade-up>
+            <div class="footer-col brand ">
+                <h2>PetZone</h2>
+                <p>ما با عشق از حیوانات خانگی شما مراقبت می‌کنیم. خدمات تخصصی با بهترین کیفیت.</p>
+            </div>
+
+            <div class="footer-col links " data-aos=fade-up>
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="# ">خانه</a></li>
+                    <li><a href="#mainMenu">محصولات</a></li>
+                    <li><a href="# ">رزرو نوبت</a></li>
+                    <li><a href="# ">تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact " data-aos=fade-up>
+                <h3>تماس با ما</h3>
+                <p><i class="fas fa-phone "></i> 09120287898 </p>
+                <p><i class="fas fa-envelope "></i> info@arshiaturk.ir</p>
+                <p><i class="fas fa-map-marker-alt "></i> تهران، خیابان نیکوکار</p>
+            </div>
+
+            <div class="footer-col social " data-aos=fade-up>
+                <h3>شبکه‌های اجتماعی</h3>
+                <div class="social-icons ">
+                    <a href="https://www.instagram.com/arhtrk "><i class="fab fa-instagram "></i></a>
+                    <a href="https://t.me/arhtrk"><i class="fab fa-telegram "></i></a>
+                    <a href="https://x.com/arhtrk1 "><i class="fab fa-x-twitter "></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom " data-aos=fade-up>
+            <p>© 2025 PetZone طراحی با عشق برای حیوانات</p>
+        </div>
+    </footer>
+    <script src="petclean.js"></script>
+</body>
+
+</html>

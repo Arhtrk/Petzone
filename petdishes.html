@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ظروف غذا و آب حیوانات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="petdishes.css">
+
+
+</head>
+
+<body>
+    <div class="fancy-bg"></div>
+    <header>
+        <h1>ظروف غذا و آب حیوانات</h1>
+        <!-- آیکون سبد خرید -->
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span id="cart-count">0</span>
+        </div>
+
+        <!-- پنل سبد خرید -->
+        <div class="shopping-cart" id="shopping-cart">
+            <div class="cart-header">
+                <h3>سبد خرید شما</h3>
+                <button onclick="toggleCart()">بستن ✖️</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <p>مجموع: <span id="cart-total">۰ تومان</span></p>
+                <button class="checkout-btn">ادامه پرداخت</button>
+            </div>
+        </div>
+    </header>
+    <section class="luxury-showcase">
+        <div class="luxury-bg-glow"></div>
+        <h2>ویترین ظروف خاص</h2>
+        <div class="luxury-cards-container">
+
+            <div class="luxury-card">
+                <img src="img/predog.jpg" alt="ظرف لوکس ۱" />
+                <div class="luxury-info">
+                    <h3>ظرف پریمیوم شیشه‌ای سگ</h3>
+                    <p>ترکیبی از طراحی شفاف، استیل ضدزنگ و زیبایی بی‌نظیر</p>
+                    <span class="luxury-price">۳۲۰,۰۰۰ تومان</span>
+                    <button onclick="addToCart('ظرف پریمیوم شیشه‌ای سگ', 'img/predog.jpg', 320000)">افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <div class="luxury-card">
+                <img src="img/precat.jpg" alt="ظرف لوکس ۲" />
+                <div class="luxury-info">
+                    <h3>ظرف سرامیکی کلاسیک گربه</h3>
+                    <p>رنگ ذغالی، پایه ضد لغزش و طراحی ارگونومیک مخصوص گربه‌ها</p>
+                    <span class="luxury-price">۲۶۰,۰۰۰ تومان</span>
+                    <button onclick="addToCart('ظرف سرامیکی کلاسیک گربه', 'img/precat.jpg', 260000)">افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+            <div class="luxury-card">
+                <img src="img/prebird.jpg" alt="ظرف لوکس ۳" />
+                <div class="luxury-info">
+                    <h3>ست ظرف دوقلو پرندگان</h3>
+                    <p>ساخته‌شده از پلاستیک مقاوم با طراحی شاد و پایه نگهدارنده</p>
+                    <span class="luxury-price">۱۸۵,۰۰۰ تومان</span>
+                    <button onclick="addToCart('ست ظرف دوقلو پرندگان', 'img/prebird.jpg', 185000)">افزودن به سبد خرید</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="filters">
+        <div class="filter-group" id="animal-filter">
+            <label>نوع حیوان:</label>
+            <button class="filter-btn active" data-filter="all-animal">همه</button>
+            <button class="filter-btn" data-filter="سگ">سگ</button>
+            <button class="filter-btn" data-filter="گربه">گربه</button>
+            <button class="filter-btn" data-filter="پرنده">پرنده</button>
+        </div>
+        <div class="filter-group" id="material-filter">
+            <label>جنس ظرف:</label>
+            <button class="filter-btn active" data-filter="all-material">همه</button>
+            <button class="filter-btn" data-filter="پلاستیکی">پلاستیکی</button>
+            <button class="filter-btn" data-filter="فلزی">فلزی</button>
+            <button class="filter-btn" data-filter="سرامیکی">سرامیکی</button>
+        </div>
+    </div>
+
+    <div class="cards-container" id="cards-container">
+        <div class="card" data-animal="سگ" data-material="سرامیکی">
+            <img src="img/dsdog.webp" alt="ظرف سرامیکی سگ">
+            <h3>ظرف سرامیکی سگ</h3>
+            <p>ظرف مقاوم و زیبا مناسب برای سگ‌های خانگی</p>
+            <div class="price">۲۰۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف سرامیکی سگ', 'img/dsdog.webp', 200000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="گربه" data-material="فلزی">
+            <img src="img/dfcat.webp" alt="ظرف فلزی گربه">
+            <h3>ظرف فلزی گربه</h3>
+            <p>ظرف استیل ضد زنگ مناسب برای گربه‌ها</p>
+            <div class="price">۱۸۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف فلزی گربه', 'img/dfcat.webp', 180000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="پرنده" data-material="پلاستیکی">
+            <img src="img/dpbird.webp" alt="ظرف پلاستیکی پرنده">
+            <h3>ظرف پلاستیکی پرنده</h3>
+            <p>ظرف سبک و مقاوم مناسب برای پرندگان خانگی</p>
+            <div class="price">۱۲۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف پلاستیکی پرنده', 'img/dpbird.webp', 120000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="سگ" data-material="فلزی">
+            <img src="img/dfdog.webp" alt="ظرف فلزی سگ">
+            <h3>ظرف فلزی سگ</h3>
+            <p>استیل ضد زنگ با پایه ضد لغزش، مناسب سگ‌های متوسط</p>
+            <div class="price">۲۳۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف فلزی سگ', 'img/dfdog.webp', 230000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="گربه" data-material="سرامیکی">
+            <img src="img/dscat.webp" alt="ظرف سرامیکی گربه">
+            <h3>ظرف سرامیکی گربه</h3>
+            <p>طراحی فانتزی با بدنه مقاوم در برابر خط و خش</p>
+            <div class="price">۲۱۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف سرامیکی گربه', 'img/dscat.webp', 210000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="پرنده" data-material="فلزی">
+            <img src="img/dfbird.webp" alt="ظرف فلزی پرنده">
+            <h3>ظرف فلزی پرنده</h3>
+            <p>ظرف استیل مقاوم مناسب قفس‌های پرندگان خانگی</p>
+            <div class="price">۹۵,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف فلزی پرنده', 'img/dfbird.webp', 95000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="سگ" data-material="پلاستیکی">
+            <img src="img/dpdog.webp" alt="ظرف پلاستیکی سگ">
+            <h3>ظرف پلاستیکی سگ</h3>
+            <p>ظرف سبک و مقاوم مناسب سفر و استفاده روزانه</p>
+            <div class="price">۱۱۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف پلاستیکی سگ', 'img/dpdog.webp', 110000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="گربه" data-material="پلاستیکی">
+            <img src="img/dpcat.webp" alt="ظرف پلاستیکی گربه">
+            <h3>ظرف پلاستیکی گربه</h3>
+            <p>دارای پایه ضدلغزش و طرح رنگی زیبا</p>
+            <div class="price">۱۳۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف پلاستیکی گربه', 'img/dpcat.webp', 130000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="پرنده" data-material="سرامیکی">
+            <img src="img/dsbird.webp" alt="ظرف سرامیکی پرنده">
+            <h3>ظرف سرامیکی پرنده</h3>
+            <p>بدنه سرامیکی بهداشتی مناسب پرندگان کوچک</p>
+            <div class="price">۱۵۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف سرامیکی پرنده', 'img/dsbird.webp', 150000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="سگ" data-material="سرامیکی">
+            <img src="img/ds2dog.webp" alt="ظرف سرامیکی سگ">
+            <h3>ظرف سرامیکی سگ</h3>
+            <p>سرامیک با لعاب ضد حساسیت، قابل شستشو در ماشین ظرف‌شویی</p>
+            <div class="price">۲۸۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف سرامیکی سگ', 'img/ds2dog.webp', 280000)">افزودن به سبد خرید</button>
+        </div>
+
+        <div class="card" data-animal="گربه" data-material="فلزی">
+            <img src="img/df2cat.webp" alt="ظرف فلزی گربه">
+            <h3>ظرف فلزی گربه</h3>
+            <p>ظرف استیل دو جداره با طراحی مینیمال و پایدار</p>
+            <div class="price">۲۴۰,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف فلزی گربه', 'img/df2cat.webp', 240000)">افزودن به سبد خرید</button>
+        </div>
+        <div class="card" data-animal="پرنده" data-material="پلاستیکی">
+            <img src="img/dp2bird.webp" alt="ظرف پلاستیکی پرنده">
+            <h3>ظرف پلاستیکی پرنده</h3>
+            <p>طراحی قلاب‌دار برای نصب آسان روی قفس، سبک و بادوام</p>
+            <div class="price">۷۵,۰۰۰ تومان</div>
+            <button class="buy-btn" onclick="addToCart('ظرف پلاستیکی پرنده', 'img/dp2bird.webp', 75000)">افزودن به سبد خرید</button>
+        </div>
+    </div>
+
+    <footer class="mega-footer " data-aos=fade-up>
+        <div class="footer-glow "></div>
+        <div class="footer-content " data-aos=fade-up>
+            <div class="footer-col brand ">
+                <h2>PetZone</h2>
+                <p>ما با عشق از حیوانات خانگی شما مراقبت می‌کنیم. خدمات تخصصی با بهترین کیفیت.</p>
+            </div>
+
+            <div class="footer-col links " data-aos=fade-up>
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="# ">خانه</a></li>
+                    <li><a href="#mainMenu">محصولات</a></li>
+                    <li><a href="# ">رزرو نوبت</a></li>
+                    <li><a href="# ">تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact " data-aos=fade-up>
+                <h3>تماس با ما</h3>
+                <p><i class="fas fa-phone "></i> 09120287898 </p>
+                <p><i class="fas fa-envelope "></i> info@arshiaturk.ir</p>
+                <p><i class="fas fa-map-marker-alt "></i> تهران، خیابان نیکوکار</p>
+            </div>
+
+            <div class="footer-col social " data-aos=fade-up>
+                <h3>شبکه‌های اجتماعی</h3>
+                <div class="social-icons ">
+                    <a href="https://www.instagram.com/arhtrk "><i class="fab fa-instagram "></i></a>
+                    <a href="https://t.me/arhtrk"><i class="fab fa-telegram "></i></a>
+                    <a href="https://x.com/arhtrk1 "><i class="fab fa-x-twitter "></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom " data-aos=fade-up>
+            <p>© 2025 PetZone طراحی با عشق برای حیوانات</p>
+        </div>
+    </footer>
+    <script src="petdishes.js"></script>
+</body>
+
+</html>

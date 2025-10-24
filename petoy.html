@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetZone - اسباب‌بازی حیوانات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="petoy.css">
+
+
+</head>
+
+<body>
+    <div class="fancy-bg"></div>
+    <header>محصولات اسباب‌بازی حیوانات
+        <!-- آیکون سبد خرید -->
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span id="cart-count">0</span>
+        </div>
+
+        <!-- پنل سبد خرید -->
+        <div class="shopping-cart" id="shopping-cart">
+            <div class="cart-header">
+                <h3>سبد خرید شما</h3>
+                <button onclick="toggleCart()">بستن ✖️</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <p>مجموع: <span id="cart-total">۰ تومان</span></p>
+                <button class="checkout-btn">ادامه پرداخت</button>
+            </div>
+        </div>
+    </header>
+    <section class="fancy-box">
+        <p>
+            در دنیای رنگارنگ حیوانات خانگی، هر اسباب‌بازی داستانی دارد که منتظر کشف شدن است.
+            <span> PetZone تجربه‌ای فراتر از خرید خواهید داشت،با</span>
+        </p>
+    </section>
+    <div class="filter-box">
+        <button class="active" data-filter="all">همه</button>
+        <button data-filter="dog">سگ</button>
+        <button data-filter="cat">گربه</button>
+        <button data-filter="bird">پرنده</button>
+    </div>
+
+    <div class="products filtered all" id="productList">
+        <!-- سگ -->
+
+        <div class="product dog"><img src="img/dog1toy.webp" alt="">
+            <h3>توپ جویدنی سگ</h3>
+            <p class="price">۱۵۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ جویدنی سگ', 'img/dog1toy.webp', 150000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog2toy.webp" alt="">
+            <h3>استخوان پلاستیکی</h3>
+            <p class="price">۱۸۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('استخوان پلاستیکی', 'img/dog2toy.webp', 180000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog3toy.webp" alt="">
+            <h3>طناب بازی سگ</h3>
+            <p class="price">۲۰۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('طناب بازی سگ', 'img/dog3toy.webp', 200000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog4toy.webp" alt="">
+            <h3>توپ صدادار</h3>
+            <p class="price">۱۶۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ صدادار', 'img/dog4toy.webp', 160000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog5toy.jpg" alt="">
+            <h3>عروسک پارچه‌ای</h3>
+            <p class="price">۱۴۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('عروسک پارچه‌ای', 'img/dog5toy.webp', 140000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog6toy.jpg" alt="">
+            <h3>اسباب‌بازی پازل سگ</h3>
+            <p class="price">۲۲۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('اسباب‌بازی پازل سگ', 'img/dog6toy.jpg', 220000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog7toy.webp" alt="">
+            <h3> تاگ آموزشی سگ</h3>
+            <p class="price">۲۵۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('کالای آموزشی سگ', 'img/dog7toy.webp', 250000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog8toy.webp" alt="">
+            <h3>توپ نرم جویدنی</h3>
+            <p class="price">۱۷۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ نرم جویدنی', 'img/dog8toy.webp', 175000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog9toy.webp" alt="">
+            <h3> توپ‌ کنترل سگ</h3>
+            <p class="price">۱۹۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('اسباب‌بازی چرخی', 'img/dog9toy.webp', 190000)">افزودن به سبد خرید</button></div>
+        <div class="product dog"><img src="img/dog10toy.webp" alt="">
+            <h3>candy اسباب بازی</h3>
+            <p class="price">۲۱۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('عروسک صدادار', 'img/dog10toy.webp', 210000)">افزودن به سبد خرید</button></div>
+
+        <!-- گربه -->
+        <div class="product cat"><img src="img/cat1.webp" alt="">
+            <h3>توپ نمدی کاموایی</h3>
+            <p class="price">۱۲۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ نمدی گربه', 'img/cat1.webp', 120000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat2.webp" alt="">
+            <h3>CirCular اسباب بازی</h3>
+            <p class="price">۱۳۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('چوبک پَر دار', 'img/cat2.webp', 130000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat3.webp" alt="">
+            <h3>موش اسباب‌بازی</h3>
+            <p class="price">۱۰۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('موش اسباب‌بازی', 'img/cat3.webp', 100000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat4.webp" alt="">
+            <h3>توپ زنگوله‌ای</h3>
+            <p class="price">۱۱۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ زنگوله‌ای', 'img/cat4.webp', 110000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat5.webp" alt="">
+            <h3>عروسک کوچک</h3>
+            <p class="price">۹۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('عروسک کوچک', 'img/cat5.webp', 95000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat6.webp" alt="">
+            <h3>اسباب بازی تعادلی</h3>
+            <p class="price">۱۲۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('ماوس نمدی رنگی', 'img/cat6.webp', 125000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat7.webp" alt="">
+            <h3>اسباب بازی آیمیگو</h3>
+            <p class="price">۱۳۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('چوب اسباب‌بازی با پر', 'img/cat7.webp', 135000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat8.webp" alt="">
+            <h3>توپ چرمی کوچک</h3>
+            <p class="price">۱۴۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ چرمی کوچک', 'img/cat8.webp', 140000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat9.webp" alt="">
+            <h3>Rotation اسباب بازی</h3>
+            <p class="price">۱۵۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('کاسه بازی گربه', 'img/cat9.webp', 150000)">افزودن به سبد خرید</button></div>
+        <div class="product cat"><img src="img/cat10.webp" alt="">
+            <h3>اسباب‌بازی تعاملی</h3>
+            <p class="price">۱۶۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('اسباب‌بازی تعاملی', 'img/cat10.webp', 160000)">افزودن به سبد خرید</button></div>
+
+        <!-- پرنده -->
+        <div class="product bird"><img src="img/b1.webp" alt="">
+            <h3>آینه پرنده</h3>
+            <p class="price">۷۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('آینه پرنده', 'img/b1.webp', 70000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b2.webp" alt="">
+            <h3>زنگوله کوچک</h3>
+            <p class="price">۸۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('زنگوله کوچک', 'img/b2.webp', 80000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b3.webp" alt="">
+            <h3>نردبان پرنده</h3>
+            <p class="price">۹۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('نردبان پرنده', 'img/b3.webp', 90000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b4.webp" alt="">
+            <h3>تاب کوچک</h3>
+            <p class="price">۱۰۰٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('تاب کوچک', 'img/b4.webp', 100000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b5.webp" alt="">
+            <h3>گوشه‌آویز پرنده</h3>
+            <p class="price">۸۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('گوشه‌آویز پرنده', 'img/b5.webp', 85000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b6.webp" alt="">
+            <h3>طناب بازی پرنده</h3>
+            <p class="price">۷۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('طناب بازی پرنده', 'img/b6.webp', 75000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b7.webp" alt="">
+            <h3>آویز رنگارنگ</h3>
+            <p class="price">۸۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('آویز رنگارنگ', 'img/b7.webp', 85000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b8.webp" alt="">
+            <h3>اسباب بازی بسکتبال</h3>
+            <p class="price">۹۵٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('قفس بازی کوچک', 'img/b8.webp', 95000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b9.webp" alt="">
+            <h3>توپ بازی پرنده</h3>
+            <p class="price">۷۸٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('توپ بازی پرنده', 'img/b9.webp', 78000)">افزودن به سبد خرید</button></div>
+        <div class="product bird"><img src="img/b10.webp" alt="">
+            <h3>چوب رنگی</h3>
+            <p class="price">۸۸٬۰۰۰ تومان</p>
+            <button class="buy-btn" onclick="addToCart('نردبان رنگی', 'img/b10.webp', 88000)">افزودن به سبد خرید</button></div>
+    </div>
+
+
+    <footer class="mega-footer " data-aos=fade-up>
+        <div class="footer-glow "></div>
+        <div class="footer-content " data-aos=fade-up>
+            <div class="footer-col brand ">
+                <h2>PetZone</h2>
+                <p>ما با عشق از حیوانات خانگی شما مراقبت می‌کنیم. خدمات تخصصی با بهترین کیفیت.</p>
+            </div>
+
+            <div class="footer-col links " data-aos=fade-up>
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="# ">خانه</a></li>
+                    <li><a href="#mainMenu">محصولات</a></li>
+                    <li><a href="# ">رزرو نوبت</a></li>
+                    <li><a href="# ">تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact " data-aos=fade-up>
+                <h3>تماس با ما</h3>
+                <p><i class="fas fa-phone "></i> 09120287898 </p>
+                <p><i class="fas fa-envelope "></i> info@arshiaturk.ir</p>
+                <p><i class="fas fa-map-marker-alt "></i> تهران، خیابان نیکوکار</p>
+            </div>
+
+            <div class="footer-col social " data-aos=fade-up>
+                <h3>شبکه‌های اجتماعی</h3>
+                <div class="social-icons ">
+                    <a href="https://www.instagram.com/arhtrk "><i class="fab fa-instagram "></i></a>
+                    <a href="https://t.me/arhtrk"><i class="fab fa-telegram "></i></a>
+                    <a href="https://x.com/arhtrk1 "><i class="fab fa-x-twitter "></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom " data-aos=fade-up>
+            <p>© 2025 PetZone طراحی با عشق برای حیوانات</p>
+        </div>
+    </footer>
+
+    <script src="petoy.js"></script>
+</body>
+
+</html>
