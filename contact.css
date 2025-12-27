@@ -1,0 +1,247 @@
+ * {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+     font-family: 'Vazir', Tahoma, sans-serif;
+     direction: rtl;
+ }
+ 
+ body {
+     background-color: #FBFFE4;
+     color: #3D8D7A;
+     line-height: 1.6;
+ }
+ 
+ .container {
+     max-width: 1100px;
+     margin: 40px auto 80px auto;
+     padding: 0 20px;
+ }
+ 
+ .section-title {
+     font-size: 2.8rem;
+     font-weight: 700;
+     color: #2b6553;
+     text-align: center;
+     margin-bottom: 8px;
+     letter-spacing: 1.2px;
+     text-shadow: 0 0 5px #A3D1C6;
+ }
+ 
+ .section-desc {
+     font-size: 1.2rem;
+     color: #3D8D7A;
+     text-align: center;
+     margin-bottom: 50px;
+     opacity: 0.85;
+     max-width: 650px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ .contact-wrapper {
+     display: flex;
+     gap: 60px;
+     justify-content: center;
+     flex-wrap: wrap;
+ }
+ /* فرم تماس */
+ 
+ .contact-form {
+     flex: 1 1 400px;
+     background-color: #fff;
+     padding: 30px 35px;
+     border-radius: 20px;
+     box-shadow: 0 10px 30px rgba(61, 141, 122, 0.15);
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+     transition: box-shadow 0.3s ease;
+ }
+ 
+ .contact-form:hover {
+     box-shadow: 0 14px 38px rgba(61, 141, 122, 0.3);
+ }
+ 
+ .contact-form label {
+     font-weight: 600;
+     color: #2b6553;
+     margin-bottom: 6px;
+ }
+ 
+ .contact-form input,
+ .contact-form textarea {
+     padding: 12px 18px;
+     border-radius: 12px;
+     border: 2px solid #A3D1C6;
+     font-size: 1rem;
+     color: #3D8D7A;
+     background-color: #FBFFE4;
+     transition: border-color 0.3s ease;
+     resize: none;
+ }
+ 
+ .contact-form input:focus,
+ .contact-form textarea:focus {
+     border-color: #3D8D7A;
+     outline: none;
+ }
+ 
+ .contact-form textarea {
+     min-height: 120px;
+ }
+ 
+ .submit-btn {
+     margin-top: 15px;
+     background-color: #3D8D7A;
+     color: #FBFFE4;
+     font-weight: 700;
+     font-size: 1.2rem;
+     padding: 14px 0;
+     border: none;
+     border-radius: 14px;
+     cursor: pointer;
+     transition: background-color 0.25s ease;
+     box-shadow: 0 6px 12px rgba(61, 141, 122, 0.5);
+ }
+ 
+ .submit-btn:hover {
+     background-color: #2b6553;
+ }
+ /* بخش اطلاعات تماس */
+ 
+ .contact-info {
+     flex: 1 1 320px;
+     background-color: #fff;
+     padding: 30px 30px;
+     border-radius: 20px;
+     box-shadow: 0 10px 30px rgba(61, 141, 122, 0.15);
+     color: #2b6553;
+     display: flex;
+     flex-direction: column;
+     gap: 14px;
+     justify-content: center;
+     line-height: 1.4;
+     transition: box-shadow 0.3s ease;
+ }
+ 
+ .contact-info:hover {
+     box-shadow: 0 14px 38px rgba(61, 141, 122, 0.3);
+ }
+ 
+ .contact-info h3 {
+     font-size: 1.8rem;
+     margin-bottom: 12px;
+     letter-spacing: 0.8px;
+     text-shadow: 0 0 4px #A3D1C6;
+ }
+ 
+ .contact-info p {
+     font-size: 1rem;
+     color: #3D8D7A;
+     line-height: 1.6;
+ }
+ /* آیکون‌های شبکه‌های اجتماعی */
+ 
+ .social-links {
+     margin-top: 20px;
+     display: flex;
+     gap: 15px;
+ }
+ 
+ .social-icon {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     width: 44px;
+     height: 44px;
+     border-radius: 50%;
+     background-color: #3D8D7A;
+     color: white;
+     text-decoration: none;
+     transition: background-color 0.3s ease, transform 0.3s ease;
+     box-shadow: 0 4px 10px rgba(61, 141, 122, 0.4);
+ }
+ 
+ .social-icon svg {
+     width: 22px;
+     height: 22px;
+     fill: currentColor;
+ }
+ 
+ .social-icon:hover {
+     background-color: #2b6553;
+     transform: scale(1.15);
+ }
+ /* مپ گوگل */
+ 
+ .map-container {
+     margin-top: 60px;
+     width: 100%;
+     height: 350px;
+     border-radius: 22px;
+     overflow: hidden;
+     box-shadow: 0 12px 25px rgba(61, 141, 122, 0.22);
+ }
+ 
+ .map-container iframe {
+     width: 100%;
+     height: 100%;
+     border: none;
+     display: block;
+     border-radius: 22px;
+ }
+ /* ریسپانسیو */
+ 
+ @media (max-width: 900px) {
+     .contact-wrapper {
+         flex-direction: column;
+         gap: 40px;
+     }
+ }
+ 
+ .fancy-bg {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+     background: linear-gradient(135deg, #FBFFE4 0%, #A3D1C6 100%);
+     overflow: hidden;
+ }
+ 
+ .fancy-bg::before {
+     content: "";
+     position: absolute;
+     top: -10%;
+     left: -10%;
+     width: 120%;
+     height: 120%;
+     background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3), transparent 40%), radial-gradient(circle at 80% 40%, rgba(179, 216, 168, 0.4), transparent 30%), radial-gradient(circle at 50% 80%, rgba(163, 209, 198, 0.35), transparent 35%);
+     animation: float 20s infinite ease-in-out;
+ }
+ 
+ .fancy-bg::after {
+     content: "";
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-image: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1440 320\"><path fill=\"%233D8D7A\" fill-opacity=\"0.1\" d=\"M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,160C672,171,768,213,864,218.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z\"/></svg>");
+     background-repeat: no-repeat;
+     background-position: bottom;
+     background-size: cover;
+     opacity: 0.7;
+ }
+ 
+ @keyframes float {
+     0% {
+         transform: translateY(0px);
+     }
+     50% {
+         transform: translateY(-20px);
+     }
+     100% {
+         transform: translateY(0px);
+     }
+ }

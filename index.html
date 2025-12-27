@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetZone</title>
+
+    <link rel="stylesheet" href="bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <script src="bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+</head>
+
+
+<body>
+    <div class="fancy-bg"></div>
+    <div id="welcome-overlay">
+        <div id="welcome-message">
+            <h1> خوش امدید PetZone به</h1>
+            <p>مراقبت حرفه‌ای برای دوستان پشمالوی شما</p>
+        </div>
+    </div>
+
+    <!-- HTML -->
+    <header class="custom-navbar navbar navbar-expand-lg sticky-top">
+        <div class="container-fluid d-flex align-items-center justify-content-between px-4">
+
+            <!-- آیکون یوزر فقط در دسکتاپ -->
+            <div class="user-icon-box d-none d-lg-block">
+                <a href="login.html" class="user-icon-link">
+                    <i class="fas fa-user-circle"></i>
+                </a>
+            </div>
+
+            <!-- لوگو -->
+            <div class="d-flex align-items-center gap-3">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="img/hiclipart.com.png" alt="Logo" class="logo-img me-2">
+                </a>
+            </div>
+
+            <!-- سرچ دسکتاپ -->
+            <div class="search-box d-none d-lg-flex align-items-center">
+                <input id="searchInput" class="form-control" type="search" placeholder="جستجو..." aria-label="input">
+                <button id="searchBtn" class="btn search-btn" type="submit">جستجو</button>
+                <ul id="searchResults" class="list-group position-absolute w-100" style="display: none;"></ul>
+            </div>
+
+
+
+            <!-- دکمه منو موبایل -->
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+            <!-- منو -->
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3 w-100">
+
+                    <!-- فقط در موبایل: ورود/ثبت نام -->
+                    <li class="nav-item d-block d-lg-none px-2">
+                        <a class="nav-link login-link fw-bold" href="login.html">ورود/ ثبت‌نام</a>
+                        <div class="login-divider mx-1"></div>
+                        <hr class="my-2" style="border-color: #B3D8A8;">
+                    </li>
+
+                    <!-- منوهای اصلی -->
+                    <li class="nav-item"><a class="nav-link" href="index.html">خانه</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servic.html">خدمات</a></li>
+                    <li class="nav-item position-relative">
+                        <a class="nav-link fw-bold d-flex align-items-center gap-1" href="#" id="productsMenuToggle"><i class="fa fa-caret-down"></i>محصولات</a>
+                        <ul class="dropdown-menu-custom d-none" id="productsDropdown">
+                            <li><a class="dropdown-item" href="petfood.html">غذای حیوانات</a></li>
+                            <li><a class="dropdown-item" href="petoy.html">اسباب بازی حیوانات</a></li>
+                            <li><a class="dropdown-item" href="petdishes.html">ظروف غذا و آب</a></li>
+                            <li><a class="dropdown-item" href="petclean.html">لوازم نظافت</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="vets.html">دامپزشکان</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">تماس با ما</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+    <!-- آیکون سبد خرید -->
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <!-- پنل سبد خرید -->
+    <div class="shopping-cart" id="shopping-cart">
+        <div class="cart-header">
+            <h3>سبد خرید شما</h3>
+            <button onclick="toggleCart()">بستن ✖️</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <p>مجموع: <span id="cart-total">۰ تومان</span></p>
+            <button class="checkout-btn">ادامه پرداخت</button>
+        </div>
+    </div>
+
+
+
+    <div class="hero-section">
+        <img src="img/hero.jpg " alt="دامپزشک و سگ " class="hero-image ">
+        <a href="#rv-form " class="book-button ">رزرو وقت</a>
+    </div>
+    <div class="vet-section-header">
+        <div class="header-icon " data-aos=fade-up>
+            <img src="img/paw2.png " alt="icon " data-aos=fade-up/>
+        </div>
+        <h2>متخصصان ما</h2>
+        <p>ما با تیمی از بهترین دامپزشکان در کنار شما و پت‌ عزیزتان هستیم تا مراقبتی حرفه‌ای و دلسوزانه ارائه دهیم.</p>
+    </div>
+    <div class="vet-cards" data-aos=fade-up>
+        <div class="vet-card ">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="دکتر سارا نادری ">
+            <div class="vet-info ">
+                <p class="vet-name ">دکتر سارا نادری</p>
+                <p class="vet-expertise "><strong>تجربه:</strong> متخصص جراحی و بیهوشی حیوانات خانگی، با ۸ سال سابقه در درمان سگ‌ها و گربه‌ها.</p>
+            </div>
+        </div>
+
+        <div class="vet-card ">
+            <img src="https://randomuser.me/api/portraits/women/66.jpg" alt="دکتر الهام فرهمند ">
+            <div class="vet-info ">
+                <p class="vet-name ">دکتر الهام فرهمند</p>
+                <p class="vet-expertise "><strong>تجربه:</strong> متخصص پوست و مو، همکاری با کلینیک‌های معتبر تهران و شیراز، و تحقیق در حوزه آلرژی حیوانات.</p>
+            </div>
+        </div>
+
+        <div class="vet-card ">
+            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="دکتر مریم آذری ">
+            <div class="vet-info ">
+                <p class="vet-name ">دکتر مریم آذری</p>
+                <p class="vet-expertise "><strong>تجربه:</strong> رفتار درمان‌گر حیوانات، مشاور تغذیه، و کار با حیوانات خاص مثل پرندگان زینتی و خرگوش‌ها.</p>
+            </div>
+        </div>
+    </div>
+    <section class="pet-products " data-aos=fade-up>
+        <div class="wave-background ">
+            <svg viewBox="0 0 1440 320 " preserveAspectRatio="none ">
+              <path fill="#b3d8a8 " fill-opacity="0.4 ">
+                <animate attributeName="d " dur="10s " repeatCount="indefinite "
+                  values=" M0,160L80,165.3C160,171,320,181,480,186.7C640,192,800,192,960,186.7C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z; M0,180L80,186.7C160,193,320,203,480,213.3C640,224,800,224,960,213.3C1120,203,1280,183,1360,170.7L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z;
+        M0,160L80,165.3C160,171,320,181,480,186.7C640,192,800,192,960,186.7C1120,181,1280,171,1360,165.3L1440,160L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z; "
+                />
+              </path>
+            </svg>
+        </div>
+        <div class="section-header " data-aos=fade-up>
+            <h2 class="section-title ">منتخب شادترین محصولات حیوانات خانگی</h2>
+            <p class="section-subtitle ">محصولاتی خاص برای شادی و سلامتی دوستان پشمالوی شما!</p>
+        </div>
+
+        <div class="products-grid" data-aos="fade-up">
+            <div class="product-card" data-id="1" data-name="شامپو سگ با عصاره آلوئه‌ورا و خاصیت ضد حساسیت" data-price="45000" data-img="img/pr-pet-dog.jpg">
+                <img src="img/pr-pet-dog.jpg" alt="شامپو سگ" />
+
+                <div class="card-info">
+                    <div class="card-text">
+                        <h3>شامپو سگ با عصاره آلوئه‌ورا و خاصیت ضد حساسیت</h3>
+                        <p class="desc">مناسب برای پوست‌های حساس، درخشان‌کننده مو</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-row">
+                            <span class="price-label">قیمت محصول:</span>
+                            <span class="price-value">۴۵,۰۰۰ تومان</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart('شامپو سگ با عصاره آلوئه‌ورا', 'img/pr-pet-dog.jpg', 45000)">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="2" data-name="غذای سوپرپریمیوم گربه با گوشت ماهی سالمون" data-price="85000" data-img="img/pr-pet-cat.jpg">
+                <img src="img/pr-pet-cat.jpg" alt="غذای گربه" />
+
+                <div class="card-info">
+                    <div class="card-text">
+                        <h3>غذای سوپرپریمیوم گربه با گوشت ماهی سالمون</h3>
+                        <p class="desc">سرشار از امگا ۳ و فیبر، تقویت سیستم گوارشی</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-row">
+                            <span class="price-label">قیمت محصول:</span>
+                            <span class="price-value">۸۵,۰۰۰ تومان</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart('غذای سوپرپریمیوم گربه', 'img/pr-pet-cat.jpg', 85000)">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="3" data-name="ویتامین کامل B-Complex با تقویت انرژی و ایمنی" data-price="55000" data-img="img/pr-pet-vt.jpg">
+                <img src="img/pr-pet-vt.jpg" alt="ویتامین حیوانات" />
+
+                <div class="card-info">
+                    <div class="card-text">
+                        <h3>ویتامین کامل B-Complex با تقویت انرژی و ایمنی</h3>
+                        <p class="desc">حاوی مواد معدنی ضروری، مناسب برای روزانه</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-row">
+                            <span class="price-label">قیمت محصول:</span>
+                            <span class="price-value">۵۵,۰۰۰ تومان</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart('ویتامین B-Complex حیوانات', 'img/pr-pet-vt.jpg', 55000)">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="4" data-name="اسباب‌بازی دندانی سگ از جنس TPR ضد گازگرفتگی" data-price="39000" data-img="img/pr-pet-toy.jpg">
+                <img src="img/pr-pet-toy.jpg" alt="اسباب بازی" />
+
+                <div class="card-info">
+                    <div class="card-text">
+                        <h3>اسباب‌بازی دندانی سگ از جنس TPR ضد گازگرفتگی</h3>
+                        <p class="desc">کمک به سلامت لثه و سرگرمی طولانی‌مدت</p>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price-row">
+                            <span class="price-label">قیمت محصول:</span>
+                            <span class="price-value">۳۹,۰۰۰ تومان</span>
+                        </div>
+                        <button class="buy-btn" onclick="addToCart('اسباب‌بازی دندانی سگ', 'img/pr-pet-toy.jpg', 39000)">افزودن به سبد خرید</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="reservation-form" id="rv-form" data-aos="fade-up">
+        <h2 class="form-title">رزرو نوبت دامپزشکی</h2>
+        <form id="reservationForm">
+            <div class="form-row">
+                <input type="text" name="ownerName" placeholder="نام و نام خانوادگی صاحب حیوان" required>
+                <input type="tel" name="phone" placeholder="شماره تماس" required>
+            </div>
+            <div class="form-row">
+                <select name="petType" required>
+                <option value="" disabled selected>نوع حیوان خانگی</option>
+                <option value="dog">سگ</option>
+                <option value="cat">گربه</option>
+                <option value="bird">پرنده</option>
+                <option value="other">دیگر</option>
+            </select>
+                <input type="text" name="petBreed" placeholder="نژاد حیوان" required>
+            </div>
+            <div class="form-row">
+                <select name="serviceType" required>
+                <option value="" disabled selected>نوع خدمات دامپزشکی</option>
+                <option value="general">چکاپ عمومی</option>
+                <option value="vaccination">واکسیناسیون</option>
+                <option value="nutrition">مشاوره تغذیه</option>
+                <option value="surgery">جراحی یا درمان</option>
+            </select>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+            </div>
+            <div class="form-row">
+                <select name="vetName" required>
+                <option value="" disabled selected>نام دامپزشک</option>
+                <option value="dr.sara">دکتر سارا نادری</option>
+                <option value="dr.elham">دکتر الهام فرهمند</option>
+                <option value="dr.maryam">دکتر مریم آذری</option>
+                <option value="dr.neda">دکتر ندا کیانی</option>
+                <option value="dr.elhamahmadi">دکتر الهام احمدی</option>
+                <option value="dr.roya">دکتر رویا قنبری</option>
+                <option value="dr.niloufar">دکتر نیلوفر کریمی</option>
+                <option value="dr.nasim">دکتر نسیم رضایی</option>
+                <option value="dr.mahtab">دکتر مهتاب حیدری</option>
+                <option value="dr.arzoo">دکتر آرزو فراهانی</option>
+                <option value="dr.narges">دکتر نرگس موسوی</option>
+<option value="dr.farzaneh">دکتر فرزانه مرادی</option>
+            </select>
+            </div>
+            <textarea name="extraInfo" rows="4" placeholder="توضیحات اضافی (اختیاری)"></textarea>
+            <button type="submit">ثبت نوبت</button>
+        </form>
+        <div id="successMessage" class="success-toast" style="display: none;">
+            <span class="check-icon">&#10003;</span>
+            <span class="message-text">نوبت شما با موفقیت ثبت شد!</span>
+        </div>
+    </section>
+    <footer class="mega-footer " data-aos=fade-up>
+        <div class="footer-glow "></div>
+        <div class="footer-content " data-aos=fade-up>
+            <div class="footer-col brand ">
+                <h2>PetZone</h2>
+                <p>ما با عشق از حیوانات خانگی شما مراقبت می‌کنیم. خدمات تخصصی با بهترین کیفیت.</p>
+            </div>
+
+            <div class="footer-col links " data-aos=fade-up>
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="#mainMenu">محصولات</a></li>
+                    <li><a href="#rv-form ">رزرو نوبت</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact " data-aos=fade-up>
+                <h3>تماس با ما</h3>
+                <p><i class="fas fa-phone "></i> 09120287898 </p>
+                <p><i class="fas fa-envelope "></i> info@arshiaturk.ir</p>
+                <p><i class="fas fa-map-marker-alt "></i> تهران، خیابان نیکوکار</p>
+            </div>
+
+            <div class="footer-col social " data-aos=fade-up>
+                <h3>شبکه‌های اجتماعی</h3>
+                <div class="social-icons ">
+                    <a href="https://www.instagram.com/arhtrk "><i class="fab fa-instagram "></i></a>
+                    <a href="https://t.me/arhtrk"><i class="fab fa-telegram "></i></a>
+                    <a href="https://x.com/arhtrk1 "><i class="fab fa-x-twitter "></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom " data-aos=fade-up>
+            <p>© 2025 PetZone طراحی با عشق برای حیوانات</p>
+        </div>
+    </footer>
+
+    <!-------------------js-------------------->
+    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetZone - غذای حیوانات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="petfood.css">
+
+
+
+</head>
+
+<body>
+    <div class="fancy-bg"></div>
+    <header>غذای حیوانات
+        <!-- آیکون سبد خرید -->
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span id="cart-count">0</span>
+        </div>
+
+        <!-- پنل سبد خرید -->
+        <div class="shopping-cart" id="shopping-cart">
+            <div class="cart-header">
+                <h3>سبد خرید شما</h3>
+                <button onclick="toggleCart()">بستن ✖️</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <p>مجموع: <span id="cart-total">۰ تومان</span></p>
+                <button class="checkout-btn">ادامه پرداخت</button>
+            </div>
+        </div>
+    </header>
+    <section class="hero-banner">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-content">
+            <h1><span id="typing-text"></span><span class="cursor">|</span></h1>
+            <p>غذای مناسب، انرژی فوق‌العاده برای دوستاتون</p>
+            <button onclick="document.getElementById('product-slide').scrollIntoView({ behavior: 'smooth' });">
+                الان خرید کن
+            </button>
+        </div>
+    </section>
+    <div class="container" id="product-slide">
+        <button class="filter-toggle" onclick="toggleFilters()">فیلتر محصولات</button>
+        <div class="filters" id="filterBox">
+            <label><input type="radio" name="animal" value="all" checked> همه</label>
+            <label><input type="radio" name="animal" value="cat"> گربه</label>
+            <label><input type="radio" name="animal" value="dog"> سگ</label>
+            <label><input type="radio" name="animal" value="bird"> پرندگان</label>
+        </div>
+        <div class="slider-container">
+            <button class="nav prev" onclick="slide(1)">›</button>
+            <div class="slider-wrapper" id="sliderWrapper">
+                <div class="product" data-animal="cat">
+                    <img src="img/khoshk cat.webp" alt="cat food">
+                    <h3>غذای خشک گربه</h3>
+                    <p class="price">۱۵۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای خشک گربه', 'img/khoshk cat.webp', 150000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="cat">
+                    <img src="img/cons cat.webp" alt="cat canned food">
+                    <h3>غذای کنسروی گربه</h3>
+                    <p class="price">۱۲۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای کنسروی گربه', 'img/cons cat.webp', 120000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="cat">
+                    <img src="img/milk cat.webp" alt="cat milk">
+                    <h3>شیر مخصوص گربه</h3>
+                    <p class="price">۹۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('شیر مخصوص گربه', 'img/milk cat.webp', 90000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="cat">
+                    <img src="img/tashvigh cat.webp" alt="cat treat">
+                    <h3>تشویقی گربه</h3>
+                    <p class="price">۷۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('تشویقی گربه', 'img/tashvigh cat.webp', 70000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="cat">
+                    <img src="img/fish.avif" alt="cat fish food">
+                    <h3>غذای ماهی‌ای گربه</h3>
+                    <p class="price">۱۳۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای ماهی‌ای گربه', 'img/fish.avif', 130000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="cat">
+                    <img src="img/baby cat.jpg" alt="kitten food">
+                    <h3>غذای بچه گربه</h3>
+                    <p class="price">۱۴۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای بچه گربه', 'img/baby cat.jpg', 140000)">افزودن به سبد خرید</button>
+                </div>
+                <!-- سگ -->
+                <div class="product" data-animal="dog">
+                    <img src="img/cons dog.webp" alt="dog food">
+                    <h3>غذای کنسروی سگ</h3>
+                    <p class="price">۱۸۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای کنسروی سگ', 'img/cons dog.webp', 180000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="dog">
+                    <img src="img/baby dog.webp" alt="puppy food">
+                    <h3>غذای توله سگ</h3>
+                    <p class="price">۲۰۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای توله سگ', 'img/baby dog.webp', 200000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="dog">
+                    <img src="img/khoshk dog.webp" alt="dry dog food">
+                    <h3>غذای خشک سگ</h3>
+                    <p class="price">۱۷۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای خشک سگ', 'img/khoshk dog.webp', 170000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="dog">
+                    <img src="img/tashvigh dog.webp" alt="dog snack">
+                    <h3>تشویقی سگ</h3>
+                    <p class="price">۱۰۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('تشویقی سگ', 'img/tashvigh dog.webp', 100000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="dog">
+                    <img src="img/ost dog.webp" alt="dog bone">
+                    <h3>استخوان جویدنی سگ</h3>
+                    <p class="price">۹۵٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('استخوان جویدنی سگ', 'img/ost dog.webp', 95000)">افزودن به سبد خرید</button>
+                </div>
+                <!-- پرندگان -->
+                <div class="product" data-animal="bird">
+                    <img src="img/d bi.webp" alt="bird seed">
+                    <h3>دانه مخصوص پرندگان</h3>
+                    <p class="price">۸۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('دانه مخصوص پرندگان', 'img/d bi.webp', 80000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="bird">
+                    <img src="img/vit bi.webp" alt="bird vitamin">
+                    <h3>ویتامین پرندگان</h3>
+                    <p class="price">۵۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('ویتامین پرندگان', 'img/vit bi.webp', 50000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="bird"><img src="img/tot bi.webp" alt="parrot food">
+                    <h3>غذای مخصوص طوطی</h3>
+                    <p class="price">۱۱۰٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('غذای مخصوص طوطی', 'img/tot bi.webp', 110000)">افزودن به سبد خرید</button>
+                </div>
+                <div class="product" data-animal="bird">
+                    <img src="img/tashvigh bi.webp" alt="bird treat">
+                    <h3>تشویقی پرندگان</h3>
+                    <p class="price">۶۵٬۰۰۰ تومان</p>
+                    <button class="buy-btn" onclick="addToCart('تشویقی پرندگان', 'img/tashvigh bi.webp', 65000)">افزودن به سبد خرید</button>
+                </div>
+            </div>
+            <button class=" nav next " onclick="slide(-1) ">‹</button>
+        </div>
+
+
+    </div>
+
+    <footer class="mega-footer " data-aos=fade-up>
+        <div class="footer-glow "></div>
+        <div class="footer-content " data-aos=fade-up>
+            <div class="footer-col brand ">
+                <h2>PetZone</h2>
+                <p>ما با عشق از حیوانات خانگی شما مراقبت می‌کنیم. خدمات تخصصی با بهترین کیفیت.</p>
+            </div>
+
+            <div class="footer-col links " data-aos=fade-up>
+                <h3>لینک‌های سریع</h3>
+                <ul>
+                    <li><a href="# ">خانه</a></li>
+                    <li><a href="#mainMenu">محصولات</a></li>
+                    <li><a href="# ">رزرو نوبت</a></li>
+                    <li><a href="# ">تماس با ما</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contact " data-aos=fade-up>
+                <h3>تماس با ما</h3>
+                <p><i class="fas fa-phone "></i> 09120287898 </p>
+                <p><i class="fas fa-envelope "></i> info@arshiaturk.ir</p>
+                <p><i class="fas fa-map-marker-alt "></i> تهران، خیابان نیکوکار</p>
+            </div>
+
+            <div class="footer-col social " data-aos=fade-up>
+                <h3>شبکه‌های اجتماعی</h3>
+                <div class="social-icons ">
+                    <a href="https://www.instagram.com/arhtrk "><i class="fab fa-instagram "></i></a>
+                    <a href="https://t.me/arhtrk"><i class="fab fa-telegram "></i></a>
+                    <a href="https://x.com/arhtrk1 "><i class="fab fa-x-twitter "></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom " data-aos=fade-up>
+            <p>© 2025 PetZone طراحی با عشق برای حیوانات</p>
+        </div>
+    </footer>
+
+    <script src="petfood.js"></script>
+</body>
+
+</html>

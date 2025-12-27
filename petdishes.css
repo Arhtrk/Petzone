@@ -1,0 +1,735 @@
+ body {
+     font-family: 'Vazirmatn', sans-serif;
+     font-family: sans-serif;
+     background-color: #f9f9f9;
+     margin: 0;
+     padding: 0;
+ }
+ 
+ header {
+     background-color: #3D8D7A;
+     color: white;
+     padding: 20px;
+     text-align: center;
+ }
+ 
+ .filters {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     justify-content: center;
+     margin: 20px auto;
+     max-width: 1000px;
+     direction: rtl;
+ }
+ 
+ .filter-group {
+     flex: 1 1 45%;
+     border: 1px solid #A3D1C6;
+     border-radius: 8px;
+     overflow: hidden;
+     min-width: 250px;
+ }
+ 
+ .filter-group>label {
+     display: block;
+     background-color: #3D8D7A;
+     color: white;
+     padding: 12px 16px;
+     cursor: pointer;
+     font-weight: bold;
+     user-select: none;
+ }
+ 
+ .filter-group .filter-btn {
+     display: none;
+     /* آکاردئونی: مخفی اولیه */
+     padding: 10px 12px;
+     background-color: #FBFFE4;
+     color: #333;
+     border: none;
+     margin: 4px;
+     border-radius: 6px;
+     font-size: 14px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+ }
+ 
+ .filter-group .filter-btn.active {
+     background-color: #A3D1C6;
+ }
+ 
+ .filter-group.open .filter-btn {
+     display: inline-block;
+     /* آکاردئونی: نمایش فقط زمانی که باز است */
+ }
+ 
+ .cards-container {
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+     gap: 20px;
+     padding: 20px;
+     max-width: 1200px;
+     margin: auto;
+ }
+ 
+ .card {
+     background-color: white;
+     border-radius: 10px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding: 15px;
+     transition: transform 0.2s;
+ }
+ 
+ .card:hover {
+     transform: translateY(-5px);
+ }
+ 
+ .card img {
+     width: 100%;
+     height: 200px;
+     object-fit: cover;
+     border-radius: 10px;
+ }
+ 
+ .card h3 {
+     margin: 10px 0 5px 0;
+     color: #3D8D7A;
+     min-height: 48px;
+ }
+ 
+ .card p {
+     font-size: 0.9em;
+     color: #555;
+     text-align: center;
+     flex-grow: 1;
+ }
+ 
+ .card .price {
+     margin-top: auto;
+     font-weight: bold;
+     color: #3D8D7A;
+     margin-bottom: 10px;
+ }
+ 
+ .card button {
+     padding: 8px 12px;
+     border: none;
+     border-radius: 5px;
+     background-color: #3D8D7A;
+     color: white;
+     cursor: pointer;
+ }
+ 
+ @media (max-width: 600px) {
+     .filters {
+         flex-direction: column;
+         align-items: center;
+     }
+ }
+ 
+ .fancy-bg {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     z-index: -1;
+     background: linear-gradient(135deg, #FBFFE4 0%, #A3D1C6 100%);
+     overflow: hidden;
+ }
+ 
+ .fancy-bg::before {
+     content: "";
+     position: absolute;
+     top: -10%;
+     left: -10%;
+     width: 120%;
+     height: 120%;
+     background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3), transparent 40%), radial-gradient(circle at 80% 40%, rgba(179, 216, 168, 0.4), transparent 30%), radial-gradient(circle at 50% 80%, rgba(163, 209, 198, 0.35), transparent 35%);
+     animation: float 20s infinite ease-in-out;
+ }
+ 
+ .fancy-bg::after {
+     content: "";
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     background-image: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1440 320\"><path fill=\"%233D8D7A\" fill-opacity=\"0.1\" d=\"M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,160C672,171,768,213,864,218.7C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z\"/></svg>");
+     background-repeat: no-repeat;
+     background-position: bottom;
+     background-size: cover;
+     opacity: 0.7;
+ }
+ 
+ @keyframes float {
+     0% {
+         transform: translateY(0px);
+     }
+     50% {
+         transform: translateY(-20px);
+     }
+     100% {
+         transform: translateY(0px);
+     }
+ }
+ 
+ .hero-banner {
+     position: relative;
+     height: 300px;
+     background: linear-gradient(135deg, #3D8D7A, #B3D8A8);
+     overflow: hidden;
+     border-radius: 20px;
+     margin: 20px 0;
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     text-align: center;
+ }
+ 
+ #particle-canvas {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     display: block;
+     z-index: 0;
+ }
+ 
+ .hero-content {
+     position: relative;
+     z-index: 1;
+     max-width: 600px;
+     padding: 0 20px;
+ }
+ 
+ .hero-content h1 {
+     font-size: 2.8rem;
+     margin-bottom: 15px;
+     font-weight: 900;
+     letter-spacing: 2px;
+     font-family: 'Arial Black', Arial, sans-serif;
+ }
+ 
+ .cursor {
+     display: inline-block;
+     background-color: white;
+     margin-left: 5px;
+     width: 3px;
+     animation: blink 1s step-start 0s infinite;
+ }
+ 
+ @keyframes blink {
+     50% {
+         background-color: transparent;
+     }
+ }
+ 
+ .hero-content p {
+     font-size: 1.2rem;
+     margin-bottom: 25px;
+     font-weight: 600;
+     opacity: 0.85;
+ }
+ 
+ .hero-content button {
+     background: #FBFFE4;
+     color: #3D8D7A;
+     padding: 12px 30px;
+     border: none;
+     border-radius: 40px;
+     font-weight: bold;
+     font-size: 1rem;
+     cursor: pointer;
+     transition: background 0.3s ease, color 0.3s ease;
+ }
+ 
+ .hero-content button:hover {
+     background: #3D8D7A;
+     color: #FBFFE4;
+ }
+ 
+ .cards-container {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     /* دسکتاپ: ۳ کارت در هر ردیف */
+     gap: 20px;
+ }
+ 
+ @media (max-width: 768px) {
+     .cards-container {
+         grid-template-columns: repeat(2, 1fr);
+         /* موبایل: ۲ کارت در هر ردیف */
+     }
+ }
+ 
+ @media (max-width: 480px) {
+     .cards-container {
+         grid-template-columns: repeat(2, 1fr);
+         /* موبایل خیلی کوچک: ۱ کارت در هر ردیف */
+     }
+ }
+ /*FOOTER*/
+ 
+ @import url('https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css');
+ @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+ .mega-footer {
+     position: relative;
+     background: linear-gradient(135deg, #3D8D7A, #A3D1C6);
+     color: #FBFFE4;
+     font-family: 'Vazir', sans-serif;
+     padding: 5rem 2rem 2rem;
+     overflow: hidden;
+     z-index: 1;
+     margin-top: 4rem;
+     direction: rtl;
+ }
+ 
+ .footer-glow {
+     position: absolute;
+     top: -40%;
+     left: -30%;
+     width: 800px;
+     height: 800px;
+     background: radial-gradient(circle, #B3D8A8 0%, transparent 70%);
+     filter: blur(100px);
+     z-index: 0;
+ }
+ 
+ .footer-content {
+     position: relative;
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+     gap: 3rem;
+     max-width: 2000px;
+     margin: 0 5%;
+     z-index: 2;
+     animation: fadeUp 1.2s ease-in-out;
+ }
+ 
+ .footer-col h2,
+ .footer-col h3 {
+     font-size: 1.7rem;
+     font-weight: 900;
+     color: #FBFFE4;
+     margin-bottom: 1.2rem;
+     text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+ }
+ 
+ .footer-col p,
+ .footer-col li {
+     font-size: 1rem;
+     line-height: 1.8;
+     color: #F3FBEF;
+     opacity: 0.95;
+ }
+ 
+ .footer-col ul {
+     list-style: none;
+     padding: 0;
+ }
+ 
+ .footer-col a {
+     color: #FBFFE4;
+     text-decoration: none;
+     transition: all 0.3s ease;
+ }
+ 
+ .footer-col a:hover {
+     color: #DFF2EC;
+     transform: translateX(-4px);
+ }
+ 
+ .social-icons {
+     display: flex;
+     gap: 1.2rem;
+     margin-top: 1rem;
+ }
+ 
+ .social-icons a {
+     font-size: 1.5rem;
+     background: rgba(255, 255, 255, 0.1);
+     padding: 0rem;
+     border-radius: 50%;
+     transition: all 0.4s ease;
+     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+     width: 48px;
+     height: 48px;
+     border-radius: 50%;
+     align-items: center;
+     justify-content: center;
+     width: 48px;
+     height: 48px;
+     border-radius: 50%;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 1.2rem;
+ }
+ 
+ .social-icons a:hover {
+     transform: scale(1.2) rotate(8deg);
+     background: #FBFFE4;
+     color: #3D8D7A;
+     box-shadow: 0 0 20px #FBFFE4;
+ }
+ 
+ .footer-bottom {
+     margin-top: 3rem;
+     text-align: center;
+     font-size: 0.95rem;
+     opacity: 0.8;
+     z-index: 2;
+     position: relative;
+ }
+ /* انیمیشن */
+ 
+ @keyframes fadeUp {
+     from {
+         transform: translateY(40px);
+         opacity: 0;
+     }
+     to {
+         transform: translateY(0);
+         opacity: 1;
+     }
+ }
+ /*buy basket*/
+ /* فونت هماهنگ با فارسی */
+ 
+ @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap');
+ * {
+     font-family: 'Vazirmatn', sans-serif;
+ }
+ 
+ .cart-icon {
+     position: fixed;
+     top: 1.5rem;
+     right: 1.5rem;
+     background: #ffffff;
+     color: #3D8D7A;
+     border: 2px solid #3D8D7A;
+     padding: 0.6rem 1rem;
+     border-radius: 2rem;
+     cursor: pointer;
+     z-index: 999;
+     font-size: large;
+     font-weight: bold;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     transition: all 0.2s ease-in-out;
+     display: flex;
+     align-items: center;
+     gap: 0.5rem;
+ }
+ 
+ .cart-icon:hover {
+     background-color: #3D8D7A;
+     color: white;
+ }
+ /* سبد خرید */
+ 
+ .shopping-cart {
+     position: fixed;
+     top: 0;
+     right: -100%;
+     width: 350px;
+     height: 100%;
+     background: #f9fafa;
+     box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+     z-index: 10001;
+     display: flex;
+     flex-direction: column;
+     transition: right 0.4s ease;
+     border-top-left-radius: 1rem;
+     border-bottom-left-radius: 1rem;
+ }
+ 
+ .shopping-cart.open {
+     right: 0;
+ }
+ /* هدر */
+ 
+ .cart-header {
+     background: linear-gradient(135deg, #3D8D7A, #1abc9c);
+     padding: 1rem 1.5rem;
+     color: white;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     border-top-left-radius: 1rem;
+ }
+ 
+ .cart-header h3 {
+     font-size: 1.1rem;
+     margin: 0;
+ }
+ 
+ .cart-header button {
+     background: none;
+     border: none;
+     color: white;
+     font-size: 1.2rem;
+     cursor: pointer;
+ }
+ /* آیتم‌ها */
+ 
+ .cart-items {
+     flex: 1;
+     overflow-y: auto;
+     padding: 1rem;
+     color: #000;
+     font-size: large;
+ }
+ 
+ .cart-item {
+     display: flex;
+     align-items: center;
+     gap: 0.8rem;
+     margin-bottom: 1rem;
+     background: white;
+     border-radius: 0.8rem;
+     padding: 0.8rem;
+     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+ }
+ 
+ .cart-item img {
+     width: 55px;
+     height: 55px;
+     border-radius: 0.6rem;
+     object-fit: cover;
+     border: 1px solid #eee;
+ }
+ 
+ .cart-item-info {
+     flex: 1;
+     text-align: right;
+ }
+ 
+ .cart-item-info p {
+     margin: 0 0 0.4rem;
+     font-weight: 600;
+     color: #333;
+ }
+ 
+ .cart-item-controls {
+     display: flex;
+     align-items: center;
+     gap: 0.4rem;
+     flex-wrap: wrap;
+ }
+ 
+ .cart-item-controls button {
+     padding: 0.3rem 0.6rem;
+     background: #3D8D7A;
+     border: none;
+     border-radius: 0.4rem;
+     color: white;
+     font-size: 0.85rem;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background 0.3s;
+ }
+ 
+ .cart-item-controls button:hover {
+     background: #2e6f63;
+ }
+ /* فوتر */
+ 
+ .cart-footer {
+     padding: 1rem 1.5rem;
+     background: #fff;
+     border-top: 1px solid #eee;
+     text-align: right;
+     border-bottom-left-radius: 1rem;
+ }
+ 
+ .cart-footer p {
+     margin-bottom: 1rem;
+     font-weight: bold;
+     font-size: large;
+     color: #3D8D7A;
+ }
+ 
+ .checkout-btn {
+     width: 100%;
+     padding: 0.8rem;
+     background: #1abc9c;
+     color: white;
+     font-weight: bold;
+     border: none;
+     border-radius: 0.6rem;
+     cursor: pointer;
+     font-size: 1rem;
+     transition: background 0.3s;
+ }
+ 
+ .checkout-btn:hover {
+     background: #16a085;
+ }
+ 
+ .fancy-box {
+     background: linear-gradient(135deg, #FBFFE4, #B3D8A8);
+     padding: 1.5rem 2rem;
+     margin: 1.5rem auto;
+     border-radius: 1.5rem;
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+     font-family: "Vazirmatn", sans-serif;
+     font-size: 1.1rem;
+     color: #3D8D7A;
+     text-align: center;
+     max-width: 850px;
+     line-height: 1.8;
+ }
+ 
+ .fancy-box span {
+     display: block;
+     margin-top: 0.8rem;
+     font-weight: bold;
+     color: #2c6f63;
+     font-size: 1.15rem;
+ }
+ 
+ .special-offer {
+     background-color: #fef6e4;
+     border: 2px dashed #ff9800;
+     padding: 1.5rem;
+     border-radius: 20px;
+     margin-bottom: 2rem;
+     animation: pulse 4s infinite;
+ }
+ 
+ .luxury-showcase {
+     position: relative;
+     background: linear-gradient(135deg, #FBFFE4 0%, #A3D1C6 100%);
+     border-radius: 24px;
+     padding: 3rem 2rem;
+     margin-bottom: 3rem;
+     overflow: hidden;
+     box-shadow: 0 0 40px rgba(61, 141, 122, 0.2);
+ }
+ 
+ .luxury-bg-glow {
+     position: absolute;
+     top: -100px;
+     left: -100px;
+     width: 300px;
+     height: 300px;
+     background: radial-gradient(circle, #3D8D7A 0%, transparent 70%);
+     filter: blur(60px);
+     animation: moveGlow 10s infinite alternate;
+     z-index: 0;
+ }
+ 
+ @keyframes moveGlow {
+     0% {
+         top: -100px;
+         left: -100px;
+     }
+     100% {
+         top: 100px;
+         left: 80%;
+     }
+ }
+ 
+ .luxury-showcase h2 {
+     font-size: 1.8rem;
+     color: #3D8D7A;
+     margin-bottom: 2rem;
+     position: relative;
+     z-index: 1;
+ }
+ 
+ .luxury-card {
+     display: flex;
+     gap: 2rem;
+     align-items: center;
+     background: rgba(255, 255, 255, 0.2);
+     backdrop-filter: blur(12px);
+     border-radius: 20px;
+     padding: 1.5rem;
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+     position: relative;
+     z-index: 1;
+     transition: transform 0.4s ease;
+ }
+ 
+ .luxury-card:hover {
+     transform: translateY(-8px);
+ }
+ 
+ .luxury-card img {
+     width: 180px;
+     border-radius: 16px;
+     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .luxury-info h3 {
+     color: #3D8D7A;
+     font-size: 1.3rem;
+     margin-bottom: 0.5rem;
+ }
+ 
+ .luxury-info p {
+     font-size: 0.95rem;
+     color: #444;
+     margin-bottom: 1rem;
+ }
+ 
+ .luxury-price {
+     font-size: 1.1rem;
+     color: #d32f2f;
+     font-weight: bold;
+     display: block;
+     margin-bottom: 1rem;
+ }
+ 
+ .luxury-info button {
+     background-color: #3D8D7A;
+     color: white;
+     border: none;
+     padding: 0.6rem 1.2rem;
+     border-radius: 12px;
+     font-size: 0.9rem;
+     cursor: pointer;
+     transition: background 0.3s ease;
+ }
+ 
+ .luxury-info button:hover {
+     background-color: #2b6e5e;
+ }
+ 
+ .luxury-cards-container {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+     gap: 2rem;
+     position: relative;
+     z-index: 1;
+ }
+ 
+ @media (max-width: 768px) {
+     .luxury-card {
+         flex-direction: column;
+         text-align: center;
+     }
+     .luxury-card img {
+         width: 100%;
+         max-width: 250px;
+         margin: 0 auto 1rem;
+     }
+     .luxury-info {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+     }
+     .luxury-info h3,
+     .luxury-info p,
+     .luxury-info button {
+         width: 100%;
+     }
+ }
