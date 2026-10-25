@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تماس با ما - PetZone</title>
+    <link rel="stylesheet" href="contact.css">
+
+
+</head>
+
+<body>
+    <div class="fancy-bg"></div>
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">تماس با ما</h2>
+            <p class="section-desc">در صورت نیاز به راهنمایی یا هرگونه سوال، از طریق فرم زیر با ما در ارتباط باشید.</p>
+
+            <div class="contact-wrapper">
+                <form id="contactForm" class="contact-form" novalidate>
+                    <label for="name">نام کامل</label>
+                    <input type="text" id="name" name="name" placeholder="نام شما" required>
+
+                    <label for="email">ایمیل</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+                    <label for="phone">شماره تلفن</label>
+                    <input type="tel" id="phone" name="phone" placeholder="09xxxxxxxxx" pattern="^09\d{9}$" required>
+
+                    <label for="message">پیام شما</label>
+                    <textarea id="message" name="message" rows="5" placeholder="پیام خود را اینجا بنویسید" required></textarea>
+
+                    <button type="submit" class="submit-btn">ارسال پیام</button>
+                </form>
+
+                <div class="contact-info">
+                    <h3>راه‌های ارتباطی</h3>
+                    <p><strong>آدرس:</strong> تهران، خیابان آزادی، پلاک 123</p>
+                    <p><strong>تلفن:</strong> 09120287898</p>
+                    <p><strong>ایمیل:</strong> info@arshiaturk.ir</p>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/arhtrk" class="social-icon" aria-label="اینستاگرام">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+    </svg>
+                        </a>
+                        <a href="https://t.me/arhtrk" class="social-icon" aria-label="تلگرام">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <path d="M22 2L11 13"/>
+      <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+    </svg>
+                        </a>
+                        <a href="https://x.com/arhtrk1" class="social-icon" aria-label="توییتر">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=تهران+خیابان+آزادی&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <script>
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', e => {
+            e.preventDefault();
+
+
+            if (!contactForm.checkValidity()) {
+                alert('لطفاً تمام فیلدها را به درستی پر کنید.');
+                return;
+            }
+
+
+            const formData = {
+                name: contactForm.name.value.trim(),
+                email: contactForm.email.value.trim(),
+                phone: contactForm.phone.value.trim(),
+                message: contactForm.message.value.trim(),
+            };
+
+
+            console.log('اطلاعات فرم:', formData);
+
+
+            alert('پیام شما با موفقیت ارسال شد.');
+
+            contactForm.reset();
+        });
+    </script>
+</body>
+
+</html>
